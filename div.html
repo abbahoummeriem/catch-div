@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>div</title>
+
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #000115;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        cursor:none;
+    }
+    .cursor{
+        z-index: 999;
+        background: #2696E8;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        pointer-events: none;
+        box-shadow: 0 0 20px #2696E8,
+                    0 0 60px #2696E8,
+                    0 0 100px #2696E8;
+         position: fixed;
+
+    }
+    .move{
+        width: 150px;
+        height: 150px;
+        background-color: #2696E8;
+          position: absolute;
+    }
+    .move:hover{
+        border-radius: 50%;
+        background-color: rgb(255, 128, 105);
+    }
+    /*.box {
+        width: 100px;
+        height: 100px;
+     
+        background-color: blue;
+        transform-origin: center center ;
+        transform: rotate(1deg);
+        // transition: transform 0.3s; 
+    } */
+    /* .box:hover {
+        transform: scale(2,2);  //Scale up the element to 150% of its original size on hover
+    } */
+</style>
+<body>     
+    <div class="cursor"></div>
+    <div onmouseover="moveDiv()" class="move"></div>
+    <!-- <div class="box">hbzeriyvbzebf</div> -->
+    <script>
+       
+      document.addEventListener("click" ,(e)=>{
+         var div = document.querySelector(".move");
+       const x=e.clientX;
+       const y=e.clientY;
+    //     div.style.left=x+"px";
+    //    div.style.top=y+"px";
+    div.style.transform="translate(xpx,ypx)";
+       //div.textContent = `Mouse clicked at: (${x},${y})`;
+       });
+    function moveDiv() {
+    var div = document.querySelector(".move");
+    var newX = Math.random()* (window.innerWidth-div.offsetWidth);
+    var newY = Math.random() * (window.innerHeight-div.offsetHeight);
+    div.style.left = newX + "px";
+    div.style.top = newY + "px";
+}
+let cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+    let x=e.pageX;
+    let y=e.pageY;
+    cursor.style.left=x+"px";
+    cursor.style.top=y+"px";
+
+})
+    </script>
+</body>
+</html>
